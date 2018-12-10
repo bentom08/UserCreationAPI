@@ -8,12 +8,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import com.qa.cv_manager.userapi.persistence.domain.UserPOJO;
 import com.qa.cv_manager.userapi.rest.UserRest;
 import com.qa.cv_manager.userapi.service.UserServiceImpl;
+import com.qa.cv_manager.userapi.util.constants.Constants;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EndpointTests {
@@ -23,29 +20,25 @@ public class EndpointTests {
 	
 	@Mock
 	UserServiceImpl service;
-	
-	private static final String MOCK_USERNAME = "ben";
-	private static final UserPOJO MOCK_USER = new UserPOJO(MOCK_USERNAME, "Password1", "Password1", true, "ROLE_ADMIN");
-	private static final ResponseEntity<Object> MOCK_RESPONSE = new ResponseEntity<>(HttpStatus.OK);
 
 	@Test
 	public void addUserTest() {
-		Mockito.when(service.addUser(MOCK_USER)).thenReturn(MOCK_RESPONSE);
-		assertEquals(MOCK_RESPONSE, rest.addUser(MOCK_USER));
-		Mockito.verify(service).addUser(MOCK_USER);
+		Mockito.when(service.addUser(Constants.TEST_USER_POJO)).thenReturn(Constants.RESPONSE_OK);
+		assertEquals(Constants.RESPONSE_OK, rest.addUser(Constants.TEST_USER_POJO));
+		Mockito.verify(service).addUser(Constants.TEST_USER_POJO);
 	}
 	
 	@Test
 	public void updatePasswordTest() {
-		Mockito.when(service.updatePassword(MOCK_USER, MOCK_USERNAME)).thenReturn(MOCK_RESPONSE);
-		assertEquals(MOCK_RESPONSE, rest.updatePassword(MOCK_USER, MOCK_USERNAME));
-		Mockito.verify(service).updatePassword(MOCK_USER, MOCK_USERNAME);
+		Mockito.when(service.updatePassword(Constants.TEST_USER_POJO, Constants.MOCK_USERNAME)).thenReturn(Constants.RESPONSE_OK);
+		assertEquals(Constants.RESPONSE_OK, rest.updatePassword(Constants.TEST_USER_POJO, Constants.MOCK_USERNAME));
+		Mockito.verify(service).updatePassword(Constants.TEST_USER_POJO, Constants.MOCK_USERNAME);
 	}
 	
 	@Test
 	public void deleteUserTest() {
-		Mockito.when(service.deleteUser(MOCK_USERNAME)).thenReturn(MOCK_RESPONSE);
-		assertEquals(MOCK_RESPONSE, rest.deleteUser(MOCK_USERNAME));
-		Mockito.verify(service).deleteUser(MOCK_USERNAME);
+		Mockito.when(service.deleteUser(Constants.MOCK_USERNAME)).thenReturn(Constants.RESPONSE_OK);
+		assertEquals(Constants.RESPONSE_OK, rest.deleteUser(Constants.MOCK_USERNAME));
+		Mockito.verify(service).deleteUser(Constants.MOCK_USERNAME);
 	}
 }

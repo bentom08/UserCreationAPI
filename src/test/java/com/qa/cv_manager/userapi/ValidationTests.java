@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qa.cv_manager.userapi.persistence.domain.UserPOJO;
+import com.qa.cv_manager.userapi.util.constants.Constants;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -22,16 +23,15 @@ public class ValidationTests {
 	@Autowired
 	private Validator validator;
 	
-	private static final UserPOJO CORRECT_TEST_USER = new UserPOJO("ben", "Password1", "Password1", true, "ROLE_ADMIN");
-	private static final UserPOJO SPECIAL_CHAR_TEST_USER = new UserPOJO("ben", "password1.", "password1.", true, "ROLE_ADMIN");
-	private static final UserPOJO DIFFERENT_PS_USER = new UserPOJO("ben", "Password1", "Password2", true, "ROLE_ADMIN");
-	private static final UserPOJO SHORT_PS_USER = new UserPOJO("ben", "Passwo1", "Passwo1", true, "ROLE_ADMIN");
-	private static final UserPOJO NOCAPS_PS_USER = new UserPOJO("ben", "password1", "password1", true, "ROLE_ADMIN");
-	private static final UserPOJO NONUMBER_PS_USER = new UserPOJO("ben", "Password", "Password", true, "ROLE_ADMIN");
+	private static final UserPOJO SPECIAL_CHAR_TEST_USER = new UserPOJO(Constants.MOCK_USERNAME, Constants.SPECIAL_CHAR_PASSWORD, Constants.SPECIAL_CHAR_PASSWORD, true, Constants.ADMIN);
+	private static final UserPOJO DIFFERENT_PS_USER = new UserPOJO(Constants.MOCK_USERNAME, Constants.MOCK_PASSWORD, Constants.UPDATED_PASSWORD, true, Constants.ADMIN);
+	private static final UserPOJO SHORT_PS_USER = new UserPOJO(Constants.MOCK_USERNAME, Constants.SHORT_PASSWORD, Constants.SHORT_PASSWORD, true, Constants.ADMIN);
+	private static final UserPOJO NOCAPS_PS_USER = new UserPOJO(Constants.MOCK_USERNAME, Constants.NO_CAPS_PASSWORD, Constants.NO_CAPS_PASSWORD, true, Constants.ADMIN);
+	private static final UserPOJO NONUMBER_PS_USER = new UserPOJO(Constants.MOCK_USERNAME, Constants.NO_NUMBER_PASSWORD, Constants.NO_NUMBER_PASSWORD, true, Constants.ADMIN);
 	
 	@Test
 	public void validObjectTest() {
-		Set<ConstraintViolation<UserPOJO>> violations = validator.validate(CORRECT_TEST_USER);
+		Set<ConstraintViolation<UserPOJO>> violations = validator.validate(Constants.TEST_USER_POJO);
 		assertEquals(true, violations.isEmpty());
 		violations = validator.validate(SPECIAL_CHAR_TEST_USER);
 		assertEquals(true, violations.isEmpty());

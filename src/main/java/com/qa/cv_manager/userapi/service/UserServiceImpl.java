@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	private UserRepository repo;
 	
 	@Autowired
-	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 	
 
 	public ResponseEntity<Object> addUser(UserPOJO user) {

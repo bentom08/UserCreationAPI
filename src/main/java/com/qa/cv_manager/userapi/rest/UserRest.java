@@ -18,7 +18,7 @@ import com.qa.cv_manager.userapi.service.UserService;
 public class UserRest {
 
 	@Autowired
-	UserService service;
+	private UserService service;
 	
 	@PostMapping("${path.addUser}")
 	public ResponseEntity<Object> addUser(@RequestBody @Valid UserPOJO user) {

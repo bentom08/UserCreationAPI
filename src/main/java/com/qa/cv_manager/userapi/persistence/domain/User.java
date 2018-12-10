@@ -10,12 +10,14 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import com.qa.cv_manager.userapi.util.constants.Constants;
+
 @Entity
-@Table(name = "${database.userTable}")
+@Table(name = Constants.USER_TABLE_NAME)
 public class User {
 	
 	@Id
-	@Column(name = "${database.usernameFieldName}")
+	@Column(name = Constants.USERNAME_FIELD_NAME)
 	private String username;
 
 	private String password;
@@ -24,7 +26,7 @@ public class User {
 	private boolean enabled;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "${database.usernameFieldName}")
+	@JoinColumn(name = Constants.USERNAME_FIELD_NAME)
 	private UserRole role;
 	
 	public User() {}

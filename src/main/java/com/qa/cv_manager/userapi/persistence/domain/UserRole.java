@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.qa.cv_manager.userapi.util.constants.Constants;
+
 @Entity
-@Table(name = "${database.userRoles}")
+@Table(name = Constants.ROLE_TABLE_NAME)
 public class UserRole {
 
 	@Id
-	@Column(name = "${database.usernameFieldName}")
+	@Column(name = Constants.USERNAME_FIELD_NAME)
 	private String username;
 	
 	private String role;

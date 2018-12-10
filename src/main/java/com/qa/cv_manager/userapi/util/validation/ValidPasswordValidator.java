@@ -14,6 +14,7 @@ import org.passay.PasswordValidator;
 
 public class ValidPasswordValidator implements ConstraintValidator<ValidPassword, String> {
 
+	@Override
 	public void initialize(ValidPassword constraintAnnotation) {}
 	
 	public boolean isValid(String password, ConstraintValidatorContext context) {

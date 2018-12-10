@@ -1,5 +1,6 @@
 package com.qa.cv_manager.userapi.util.constants;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -11,11 +12,22 @@ public class Constants {
 	
 	private Constants() {}
 	
+	
+	@Value("${userbase.table.roles}")
+	public static final String ROLE_TABLE_NAME = "";
+	
+	@Value("${userbase.table.users}")
+	public static final String USER_TABLE_NAME = "";
+	
+	@Value("${userbase.field.username}")
+	public static final String USERNAME_FIELD_NAME = "";
+	
+	
 	public static final String PASSWORD_MATCHES_ERROR = "Passwords don't match";
 	public static final String INVALID_PASSWORD_ERROR = "Invalid Password";
 
 	//Testing
-	public static final String MOCK_USERNAME = "ben";
+	public static final String MOCK_USERNAME = "MOCK_USER";
 	public static final String MOCK_PASSWORD = "Password1";
 	public static final String UPDATED_PASSWORD = "Password2";
 	public static final String ADMIN = "ROLE_ADMIN";

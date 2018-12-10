@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.cv_manager.userapi.persistence.domain.UserPOJO;
 import com.qa.cv_manager.userapi.service.UserService;
-import com.qa.cv_manager.userapi.service.UserServiceImpl;
 
 @RestController
 public class UserRest {

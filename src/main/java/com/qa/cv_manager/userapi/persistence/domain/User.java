@@ -1,6 +1,7 @@
 package com.qa.cv_manager.userapi.persistence.domain;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,10 +11,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "users")
+@Table(name = "${database.userTable}")
 public class User {
 	
 	@Id
+	@Column(name = "username")
 	private String username;
 
 	private String password;

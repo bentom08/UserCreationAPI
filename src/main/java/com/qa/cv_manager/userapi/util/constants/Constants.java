@@ -10,6 +10,9 @@ import com.qa.cv_manager.userapi.persistence.domain.UserRole;
 public class Constants {
 	
 	private Constants() {}
+	
+	public static final String PASSWORD_MATCHES_ERROR = "Passwords don't match";
+	public static final String INVALID_PASSWORD_ERROR = "Invalid Password";
 
 	//Testing
 	public static final String MOCK_USERNAME = "ben";

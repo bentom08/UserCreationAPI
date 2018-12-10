@@ -8,13 +8,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qa.cv_manager.userapi.persistence.domain.User;
-import com.qa.cv_manager.userapi.persistence.domain.UserRole;
 import com.qa.cv_manager.userapi.persistence.repository.UserRepository;
 import com.qa.cv_manager.userapi.rest.UserRest;
 import com.qa.cv_manager.userapi.util.constants.Constants;

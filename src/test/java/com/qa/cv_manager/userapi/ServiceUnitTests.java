@@ -10,12 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
-import com.qa.cv_manager.userapi.persistence.domain.User;
-import com.qa.cv_manager.userapi.persistence.domain.UserPOJO;
-import com.qa.cv_manager.userapi.persistence.domain.UserRole;
 import com.qa.cv_manager.userapi.persistence.repository.UserRepository;
 import com.qa.cv_manager.userapi.service.UserServiceImpl;
 import com.qa.cv_manager.userapi.util.constants.Constants;

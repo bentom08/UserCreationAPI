@@ -1,7 +1,5 @@
 package com.qa.cv_manager.userapi.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,31 +21,19 @@ public class UserServiceImpl implements UserService {
 	
 
 	public ResponseEntity<Object> addUser(UserPOJO user) {
-		UserRole role = new UserRole(user.getUsername(), user.getRole());
-		
-		User storedUser = new User(user.getUsername(),
-									passwordEncoder.encode(user.getPassword()),
-									user.isEnabled(),
-									role);
+		User storedUser = createUserEntityFromPOJO(user);
 
 		repo.save(storedUser);
 		
 		return ResponseEntity.ok().build();
 	}
 
-	public ResponseEntity<Object> updatePassword(UserPOJO user, String username) {
-		Optional<User> optionalUser = repo.findById(username);
-		
-		if (!optionalUser.isPresent()) {
+	public ResponseEntity<Object> updatePassword(UserPOJO user, String username) {	
+		if (!userExistsInDatabase(username)) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		UserRole role = new UserRole(user.getUsername(), user.getRole());
-		
-		User storedUser = new User(user.getUsername(),
-				passwordEncoder.encode(user.getPassword()),
-				user.isEnabled(),
-				role);
+		User storedUser = createUserEntityFromPOJO(user);
 		
 		storedUser.setUsername(username);
 		repo.save(storedUser);
@@ -56,15 +42,26 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public ResponseEntity<Object> deleteUser(String username) {
-		Optional<User> user = repo.findById(username);
-		
-		if(!user.isPresent()) {
+		if(!userExistsInDatabase(username)) {
 			return ResponseEntity.notFound().build();
 		}
 			
 		repo.deleteById(username);
 		
 		return ResponseEntity.ok().build();
+	}
+	
+	private User createUserEntityFromPOJO(UserPOJO user) {
+		UserRole role = new UserRole(user.getUsername(), user.getRole());
+		
+		return new User(user.getUsername(),
+				passwordEncoder.encode(user.getPassword()),
+				user.isEnabled(),
+				role);
+	}
+	
+	private boolean userExistsInDatabase(String username) {
+		return repo.findById(username).isPresent();
 	}
 
 }

@@ -1,14 +1,16 @@
 package com.qa.cv_manager.userapi.persistence.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user_roles")
+@Table(name = "${database.userRoles}")
 public class UserRole {
 
 	@Id
+	@Column(name = "${database.usernameFieldName}")
 	private String username;
 	
 	private String role;

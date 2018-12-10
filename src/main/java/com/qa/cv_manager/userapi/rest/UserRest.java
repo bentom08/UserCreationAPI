@@ -21,17 +21,17 @@ public class UserRest {
 	@Autowired
 	UserService service;
 	
-	@PostMapping("/addUser")
+	@PostMapping("${path.addUser}")
 	public ResponseEntity<Object> addUser(@RequestBody @Valid UserPOJO user) {
 		return service.addUser(user);
 	}
 	
-	@PutMapping("/updateUser/{username}")
+	@PutMapping("${path.updatePassword}")
 	public ResponseEntity<Object> updatePassword(@RequestBody @Valid UserPOJO user, @PathVariable String username) {
 		return service.updatePassword(user, username);
 	}
 	
-	@DeleteMapping("/deleteUser/{username}")
+	@DeleteMapping("${path.deleteUser}")
 	public ResponseEntity<Object> deleteUser(@PathVariable String username) {
 		return service.deleteUser(username);
 	}

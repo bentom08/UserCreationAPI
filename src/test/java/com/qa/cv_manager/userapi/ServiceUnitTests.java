@@ -20,13 +20,13 @@ import com.qa.cv_manager.userapi.util.constants.Constants;
 public class ServiceUnitTests {
 
 	@InjectMocks
-	UserServiceImpl service;
+	private UserServiceImpl service;
 	
 	@Mock
-	UserRepository repo;
+	private UserRepository repo;
 	
 	@Mock
-	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 	
 	@Test
 	public void addUserTest() {

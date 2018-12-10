@@ -16,10 +16,10 @@ import com.qa.cv_manager.userapi.util.constants.Constants;
 public class EndpointTests {
 	
 	@InjectMocks
-	UserRest rest;
+	private UserRest rest;
 	
 	@Mock
-	UserServiceImpl service;
+	private UserServiceImpl service;
 
 	@Test
 	public void addUserTest() {

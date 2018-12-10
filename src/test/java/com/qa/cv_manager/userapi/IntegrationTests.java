@@ -21,12 +21,12 @@ import com.qa.cv_manager.userapi.util.constants.Constants;
 public class IntegrationTests {
 
 	@Autowired
-	UserRest rest;
+	private UserRest rest;
 	
 	@Autowired
-	UserRepository repo;
+	private UserRepository repo;
 	
-	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	private static final User UPDATED_TEST_USER = new User(Constants.MOCK_USERNAME, Constants.UPDATED_PASSWORD, true, Constants.MOCK_USER_ROLE);
 	

@@ -15,7 +15,7 @@ import org.hibernate.annotations.Type;
 public class User {
 	
 	@Id
-	@Column(name = "username")
+	@Column(name = "${database.usernameFieldName}")
 	private String username;
 
 	private String password;
@@ -24,7 +24,7 @@ public class User {
 	private boolean enabled;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "${database.usernameFieldName}")
 	private UserRole role;
 	
 	public User() {}

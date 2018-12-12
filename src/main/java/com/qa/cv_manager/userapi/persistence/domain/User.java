@@ -1,7 +1,6 @@
 package com.qa.cv_manager.userapi.persistence.domain;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,14 +9,11 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-import com.qa.cv_manager.userapi.util.constants.Constants;
-
 @Entity
-@Table(name = Constants.USER_TABLE_NAME)
+@Table(name = "users")
 public class User {
 	
 	@Id
-	@Column(name = Constants.USERNAME_FIELD_NAME)
 	private String username;
 
 	private String password;
@@ -26,7 +22,7 @@ public class User {
 	private boolean enabled;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = Constants.USERNAME_FIELD_NAME)
+	@JoinColumn(name = "username")
 	private UserRole role;
 	
 	public User() {}

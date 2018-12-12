@@ -10,18 +10,7 @@ import com.qa.cv_manager.userapi.persistence.domain.UserRole;
 
 public class Constants {
 	
-	private Constants() {}
-	
-	
-	@Value("${userbase.table.roles}")
-	public static final String ROLE_TABLE_NAME = "";
-	
-	@Value("${userbase.table.users}")
-	public static final String USER_TABLE_NAME = "";
-	
-	@Value("${userbase.field.username}")
-	public static final String USERNAME_FIELD_NAME = "";
-	
+	private Constants() {}	
 	
 	public static final String PASSWORD_MATCHES_ERROR = "Passwords don't match";
 	public static final String INVALID_PASSWORD_ERROR = "Invalid Password";

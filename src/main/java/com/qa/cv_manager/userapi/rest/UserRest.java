@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,11 +27,13 @@ public class UserRest {
 	}
 	
 	@PutMapping("${path.updatePassword}")
+	@PreAuthorize("#username == authentication.principal.username || hasRole('ADMIN')")
 	public ResponseEntity<Object> updatePassword(@RequestBody @Valid UserPOJO user, @PathVariable String username) {
 		return service.updatePassword(user, username);
 	}
 	
 	@DeleteMapping("${path.deleteUser}")
+	@PreAuthorize("#username == authentication.principal.username || hasRole('ADMIN')")
 	public ResponseEntity<Object> deleteUser(@PathVariable String username) {
 		return service.deleteUser(username);
 	}

@@ -1,6 +1,5 @@
 package com.qa.cv_manager.userapi.util.constants;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

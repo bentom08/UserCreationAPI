@@ -1,6 +1,7 @@
 package com.qa.cv_manager.userapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,12 @@ public class UserServiceImpl implements UserService {
 	
 
 	public ResponseEntity<Object> addUser(UserPOJO user) {
+		if(userExistsInDatabase(user.getUsername())) {
+			return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
+		}
+		
 		User storedUser = createUserEntityFromPOJO(user);
-
+		
 		repo.save(storedUser);
 		
 		return ResponseEntity.ok().build();

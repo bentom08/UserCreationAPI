@@ -34,4 +34,14 @@ public class UserRest {
 	public ResponseEntity<Object> deleteUser(@PathVariable String username) {
 		return service.deleteUser(username);
 	}
+	
+	@PutMapping("${path.disableAccount}")
+	public ResponseEntity<Object> disableAccount(@PathVariable String username) {
+		return service.disableAccount(username);
+	}
+	
+	@PutMapping("${path.enableAccount}")
+	public ResponseEntity<Object> enableAccount(@PathVariable String username) {
+		return service.enableAccount(username);
+	}
 }

@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.qa.cv_manager.userapi.persistence.domain.User;
+import com.qa.cv_manager.userapi.persistence.domain.UserEmail;
 import com.qa.cv_manager.userapi.persistence.domain.UserPOJO;
 import com.qa.cv_manager.userapi.persistence.domain.UserRole;
 import com.qa.cv_manager.userapi.persistence.repository.UserRepository;
@@ -79,11 +80,12 @@ public class UserServiceImpl implements UserService {
 	
 	private User createUserEntityFromPOJO(UserPOJO user) {
 		UserRole role = new UserRole(user.getUsername(), user.getRole());
+		UserEmail email = new UserEmail(user.getUsername(), user.getEmail());
 		
 		return new User(user.getUsername(),
 				passwordEncoder.encode(user.getPassword()),
 				user.isEnabled(),
-				role);
+				role, email);
 	}
 	
 	private boolean userExistsInDatabase(String username) {

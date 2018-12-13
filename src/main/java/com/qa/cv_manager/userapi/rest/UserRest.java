@@ -27,13 +27,13 @@ public class UserRest {
 	}
 	
 	@PutMapping("${path.updatePassword}")
-	@PreAuthorize("#username == authentication.principal.username || hasRole('ADMIN')")
+	@PreAuthorize("#username == authentication.principal.username || hasAnyRole('ADMIN', 'SUPER')")
 	public ResponseEntity<Object> updatePassword(@RequestBody @Valid UserPOJO user, @PathVariable String username) {
 		return service.updatePassword(user, username);
 	}
 	
 	@DeleteMapping("${path.deleteUser}")
-	@PreAuthorize("#username == authentication.principal.username || hasRole('ADMIN')")
+	@PreAuthorize("#username == authentication.principal.username || hasAnyRole('ADMIN', 'SUPER')")
 	public ResponseEntity<Object> deleteUser(@PathVariable String username) {
 		return service.deleteUser(username);
 	}

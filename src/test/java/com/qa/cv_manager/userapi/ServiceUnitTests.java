@@ -1,6 +1,7 @@
 package com.qa.cv_manager.userapi;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.times;
 
 import java.util.Optional;
 
@@ -62,6 +63,34 @@ public class ServiceUnitTests {
 	public void deleteUserNotFoundTest() {
 		Mockito.when(repo.findById(Constants.MOCK_USERNAME)).thenReturn(Optional.empty());
 		assertEquals(Constants.RESPONSE_NOT_FOUND, service.deleteUser(Constants.MOCK_USERNAME));
+		Mockito.verify(repo).findById(Constants.MOCK_USERNAME);
+	}
+	
+	@Test
+	public void enableAccountTest() {
+		Mockito.when(repo.findById(Constants.MOCK_USERNAME)).thenReturn(Optional.of(Constants.MOCK_USER));
+		assertEquals(Constants.RESPONSE_OK, service.enableAccount(Constants.MOCK_USERNAME));
+		Mockito.verify(repo, times(2)).findById(Constants.MOCK_USERNAME);
+	}
+	
+	@Test
+	public void enableAccountNotFoundTest() {
+		Mockito.when(repo.findById(Constants.MOCK_USERNAME)).thenReturn(Optional.empty());
+		assertEquals(Constants.RESPONSE_NOT_FOUND, service.enableAccount(Constants.MOCK_USERNAME));
+		Mockito.verify(repo).findById(Constants.MOCK_USERNAME);
+	}
+	
+	@Test
+	public void disableAccountTest() {
+		Mockito.when(repo.findById(Constants.MOCK_USERNAME)).thenReturn(Optional.of(Constants.MOCK_USER));
+		assertEquals(Constants.RESPONSE_OK, service.disableAccount(Constants.MOCK_USERNAME));
+		Mockito.verify(repo, times(2)).findById(Constants.MOCK_USERNAME);
+	}
+	
+	@Test
+	public void disableAccountNotFoundTest() {
+		Mockito.when(repo.findById(Constants.MOCK_USERNAME)).thenReturn(Optional.empty());
+		assertEquals(Constants.RESPONSE_NOT_FOUND, service.disableAccount(Constants.MOCK_USERNAME));
 		Mockito.verify(repo).findById(Constants.MOCK_USERNAME);
 	}
 }

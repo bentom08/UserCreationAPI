@@ -17,10 +17,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	DataSource dataSource;
+	private DataSource dataSource;
 	
 	@Autowired
-	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
      public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         	.and()
         	.authorizeRequests()
         	.antMatchers("/updatePassword/**", "/deleteUser/**").permitAll()
-        	.antMatchers("/enableAccount/**", "/disableAccount/**").hasRole("ADMIN")
+        	.antMatchers("/enableAccount/**", "/disableAccount/**").hasAnyRole("ADMIN", "SUPER")
         	.anyRequest().authenticated()
         	.and()
         	.authorizeRequests()

@@ -16,9 +16,11 @@ public class Constants {
 
 	//Testing
 	public static final String MOCK_USERNAME = "MOCK_USER";
+	public static final String ANOTHER_MOCK_USERNAME = "ANOTHER_MOCK_USER";
 	public static final String MOCK_PASSWORD = "Password1";
 	public static final String UPDATED_PASSWORD = "Password2";
 	public static final String ADMIN = "ROLE_ADMIN";
+	public static final String USER = "ROLE_USER";
 	public static final String SHORT_PASSWORD = "Passwo1";
 	public static final String SPECIAL_CHAR_PASSWORD = "password1.";
 	public static final String NO_CAPS_PASSWORD = "password1";

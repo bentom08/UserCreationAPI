@@ -1,8 +1,7 @@
 package com.qa.cv_manager.userapi.persistence.domain;
 
-import org.hibernate.validator.constraints.Email;
-
 import com.qa.cv_manager.userapi.util.validation.PasswordMatches;
+import com.qa.cv_manager.userapi.util.validation.ValidEmail;
 import com.qa.cv_manager.userapi.util.validation.ValidPassword;
 
 @PasswordMatches

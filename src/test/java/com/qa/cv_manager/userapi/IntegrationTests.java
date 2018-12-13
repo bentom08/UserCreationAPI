@@ -32,7 +32,7 @@ public class IntegrationTests {
 	
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
-	private static final User UPDATED_TEST_USER = new User(Constants.MOCK_USERNAME, Constants.UPDATED_PASSWORD, true, Constants.MOCK_USER_ROLE);
+	private static final User UPDATED_TEST_USER = new User(Constants.MOCK_USERNAME, Constants.UPDATED_PASSWORD, true, Constants.MOCK_USER_ROLE, Constants.MOCK_USER_EMAIL);
 	
 	@Test
 	public void addUserTest() {

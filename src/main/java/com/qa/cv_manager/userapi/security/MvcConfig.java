@@ -11,9 +11,9 @@ public class MvcConfig {
     public DriverManagerDataSource dataSource() {
     	DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
     	driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-    	driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/userbase");
-    	driverManagerDataSource.setUsername("root");
-    	driverManagerDataSource.setPassword("root");
+    	driverManagerDataSource.setUrl("${spring.datasource.url}");
+    	driverManagerDataSource.setUsername("${spring.datasource.username}");
+    	driverManagerDataSource.setPassword("${spring.datasource.password}");
     	return driverManagerDataSource;
     }
 }
